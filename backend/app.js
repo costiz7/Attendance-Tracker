@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 import { sequelize, connectDB } from './database/db.js';
+import User from './models/User.js';
 
 const app = express();
 const PORT = 3000;
