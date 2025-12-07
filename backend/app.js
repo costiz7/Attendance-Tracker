@@ -2,10 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 import { sequelize, connectDB } from './database/db.js';
-import User from './models/User.js';
-import Event from './models/Event.js';
-import EventGroup from './models/EventGroup.js';
-import Attendance from './models/Attendance.js';
+import './models/associations.js';
 
 const app = express();
 const PORT = 3000;

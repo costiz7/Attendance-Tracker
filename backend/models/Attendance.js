@@ -10,7 +10,7 @@ Attendance.init (
             primaryKey: true,
             autoIncrement: true,
         },
-        userID: {
+        userId: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
