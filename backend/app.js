@@ -1,5 +1,7 @@
 import express from 'express';
 import cors from 'cors';
+import 'dotenv/config';
+import { sequelize, connectDB } from './database/db.js';
 
 const app = express();
 const PORT = 3000;
@@ -10,10 +12,19 @@ app.use(cors());
 app.use(express.json());
 
 
-//Cand se face un get pe root (efectiv cand se porneste serverul), afiseaza "Serverul merge :D"
+//Cand se face un get pe root, afiseaza "Serverul merge :D"
 app.get('/', (req, res) => {
-    res.send('Serverul merge :D');
+    res.send('The server is runnning');
 })
 
-//Shhhhhh the server listens
-app.listen(PORT, () => console.log(`Serverul merge pe: http://localhost:${PORT}`));
+const start = async () => {
+    await connectDB();
+
+    await sequelize.sync({ alter: true });
+    console.log('All models synced.');
+
+    //Shhhhhh the server listens
+    app.listen(PORT, () => console.log(`The server is running on: http://localhost:${PORT}`));
+};
+
+start();
