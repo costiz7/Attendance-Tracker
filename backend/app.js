@@ -3,6 +3,7 @@ import cors from 'cors';
 import 'dotenv/config';
 import { sequelize, connectDB } from './database/db.js';
 import './models/associations.js';
+import authRoutes from './routes/authRoutes.js';    
 
 const app = express();
 const PORT = 3000;
@@ -12,6 +13,7 @@ app.use(cors());
 //Pentru a trimite mai usor json()
 app.use(express.json());
 
+app.use('/api/auth', authRoutes);
 
 //Cand se face un get pe root, afiseaza "Serverul merge :D"
 app.get('/', (req, res) => {
