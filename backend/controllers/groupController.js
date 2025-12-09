@@ -34,7 +34,7 @@ export const getUserGroups = async (req, res) => {
                 {
                     model: Event,
                     as: 'events',
-                    attributes: ['id', 'name', 'status', 'startTime']
+                    attributes: ['id', 'name', 'startTime', 'endTime']
                 }
             ],
             order: [['createdAt', 'DESC']]
