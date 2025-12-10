@@ -6,6 +6,7 @@ import './models/associations.js';
 import authRoutes from './routes/authRoutes.js'; 
 import groupRoutes from './routes/groupRoutes.js';   
 import eventRoutes from './routes/eventRoutes.js';
+import attendanceRoutes from './routes/attendanceRoutes.js';
 
 const app = express();
 const PORT = 3000;
@@ -24,9 +25,8 @@ app.use('/api/groups', groupRoutes);
 //We send every event request to our event router
 app.use('/api/events', eventRoutes);
 
-app.get('/', (req, res) => {
-    res.send('The server is runnning');
-})
+//We send every attendance request to our attendance router
+app.use('/api/attendances', attendanceRoutes);
 
 const start = async () => {
     await connectDB();

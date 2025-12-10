@@ -66,7 +66,8 @@ User.hasMany(Attendance, {
 //Direct relation Event to Attendance
 Event.hasMany(Attendance, { 
     foreignKey: 'eventId',
-    onDelete: 'CASCADE'
+    onDelete: 'CASCADE',
+    as:'attendances'
 });
 
 export { User, Event, EventGroup, Attendance };

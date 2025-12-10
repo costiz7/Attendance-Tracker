@@ -4,7 +4,7 @@ import EventGroup from "../models/EventGroup.js";
 //Create a random access code
 const generateCode = (length = 6) => {
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    const result = '';
+    let result = '';
     for(let i = 0; i < length; i++){
         result += characters.charAt(Math.floor(Math.random() * characters.length));
     }
@@ -50,9 +50,9 @@ export const getEventsByGroup = async (req, res) => {
         const { groupId } = req.params;
         const userId = req.user.id;
 
-        const group = await Event.findOne({ where: { id: groupId, ownerId: userId } });
+        const group = await EventGroup.findOne({ where: { id: groupId, ownerId: userId } });
 
-        if(!groupId){
+        if(!group){
             return res.status(404).json({ message: "Group not found!" });
         }
 
@@ -72,7 +72,7 @@ export const getEventsByGroup = async (req, res) => {
 export const getEventById = async (req, res) => {
     try {
         const { id } = req.params;
-        const userId = req.userId.id;
+        const userId = req.user.id;
 
         const event = await Event.findOne({
             where: { id },
