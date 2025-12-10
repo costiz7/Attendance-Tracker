@@ -5,6 +5,7 @@ import { sequelize, connectDB } from './database/db.js';
 import './models/associations.js';
 import authRoutes from './routes/authRoutes.js'; 
 import groupRoutes from './routes/groupRoutes.js';   
+import eventRoutes from './routes/eventRoutes.js';
 
 const app = express();
 const PORT = 3000;
@@ -19,6 +20,9 @@ app.use('/api/auth', authRoutes);
 
 //We send every group request to our group router
 app.use('/api/groups', groupRoutes);
+
+//We send every event request to our event router
+app.use('/api/events', eventRoutes);
 
 app.get('/', (req, res) => {
     res.send('The server is runnning');
