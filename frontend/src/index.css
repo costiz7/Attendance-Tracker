@@ -3,10 +3,11 @@ html, body, #root {
   margin: 0;
   padding: 0;
   width: 100%;
+  font-family: 'Varela Round', sans-serif;
 }
 
 #root {
-  background-color: rgb(0, 43, 5);
+  background-color: rgb(53, 0, 103);
   display: flex;
   justify-content: center;
 }
