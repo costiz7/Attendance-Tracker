@@ -1,73 +1,119 @@
 # 🕒 Attendance Tracker
 
-Aplicație web pentru monitorizarea prezenței la evenimente, destinată atât organizatorilor cât și participanților.  
-Proiect realizat pentru disciplina **Tehnologii Web**.
+A web application for monitoring event attendance, designed for both organizers and participants.  
+**Project created for the Web Technologies course.**
 
 ---
 
-## 🎯 Obiectiv
+## 🎯 About
 
-Realizarea unei aplicații **Single Page Application (SPA)** care permite:
-- înregistrarea evenimentelor și a grupurilor de evenimente;
-- generarea automată de coduri / QR pentru acces;
-- confirmarea prezenței participanților;
-- exportul listelor de prezență în formate CSV/XLSX.
-
----
-
-## ⚙️ Tehnologii utilizate
-
-| Componentă | Tehnologie |
-|-------------|-------------|
-| **Frontend** | React.js |
-| **Backend** | Node.js + Express |
-| **Bază de date** | MySQL |
-| **ORM** | Sequelize |
-| **Export date** | XLSX / CSV |
-| **Coduri QR** | NPM package `qrcode` |
+This application allows:
+- ✅ Creating and managing events
+- 🔑 Automatic generation of unique access codes
+- 📋 Confirming attendance via code
+- 📊 Real-time participant lists
+- 📥 Data export in CSV format
 
 ---
 
-## 🧩 Arhitectură generală
+## 🛠️ Tech Stack
 
-Aplicația este formată din două componente principale:
-
-- **Frontend (SPA)** – React.js, comunică cu API-ul REST prin `fetch`
-- **Backend (API REST)** – Express + Sequelize, conectat la baza de date MySQL
+- **Frontend:** React.js (Vite)
+- **Backend:** Node.js + Express
+- **Database:** MySQL
+- **ORM:** Sequelize
+- **Authentication:** JWT (JSON Web Tokens)
 
 ---
 
-## 👥 Tipuri de utilizatori
+## 👥 User Roles
 
-### 🔹 Organizator
-- se conectează în aplicație;
-- creează evenimente sau grupuri de evenimente;
-- obține codul / QR-ul pentru accesul participanților;
-- vizualizează lista de participanți prezenți în timp real;
-- exportă listele în format CSV/XLSX.
+### 🔹 Organizer
+- Creates events and event groups
+- Generates unique access codes
+- Views participants in real-time
+- Exports attendance lists (CSV)
 
 ### 🔹 Participant
-- se conectează în aplicație;
-- introduce codul sau scanează QR-ul pentru a marca prezența;
-- poate consulta istoricul propriu al prezențelor (opțional).
+- Enters access code to confirm attendance
+- Can view personal attendance history
 
 ---
 
-## 📄 Flux de utilizare
+## 📦 Installation & Setup
 
-1. Utilizatorul accesează aplicația → pagina **Login**  
-2. În funcție de rolul selectat (`organizer` / `participant`), este redirecționat spre:
-   - `/organizer/dashboard` – interfață pentru gestionarea evenimentelor
-   - `/participant/join` – interfață pentru introducerea codului de prezență
-3. Backend-ul gestionează autentificarea și persistă datele în MySQL prin Sequelize.
-4. La final, organizatorul poate exporta prezențele.
+### Prerequisites
+- Node.js (v18+)
+- MySQL
+- npm or yarn
+
+### 1. Backend Setup
+
+```bash
+cd backend
+npm install
+```
+
+Create a `.env` file:
+```env
+DB_NAME=attendance_db
+DB_USER=root
+DB_PASS=your_password
+DB_HOST=localhost
+DB_DIALECT=mysql
+JWT_SECRET=your_secret_key_here
+```
+
+Start the server:
+```bash
+npm run dev
+```
+
+### 2. Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
 ---
 
-## 🧱 Modelul bazei de date
+## 🗂️ Database Structure
 
-| Tabel | Câmpuri principale | Relații |
-|-------|--------------------|----------|
-| **users** | id, name, email, password, role | 1–n cu `events` (organizatorul) |
-| **events** | id, name, code, status, start_time, end_time, organizer_id | n–n cu `users` prin `attendance` |
-| **attendance** | id, user_id, event_id, timestamp | legătură many-to-many |
+| Table | Description |
+|-------|-------------|
+| **users** | Users (organizers & participants) |
+| **event_groups** | Groups of events |
+| **events** | Individual events with unique codes |
+| **attendances** | Many-to-many relationship between users and events |
+
+---
+
+## 🚀 Key Features
+
+- ✨ **Secure authentication** with JWT
+- 🎲 **Unique codes** automatically generated for each event
+- ⏰ **Time validation** - attendance can only be marked during event timeframe
+- 🔒 **Duplicate registration protection**
+- 📤 **CSV export** for individual events or entire groups
+
+---
+
+## 📝 API Endpoints (examples)
+
+```
+POST   /api/auth/register          # User registration
+POST   /api/auth/login             # User login
+POST   /api/groups                 # Create event group
+POST   /api/events                 # Create event
+POST   /api/attendances/join       # Mark attendance
+GET    /api/attendances/event/:id  # List participants
+GET    /api/attendances/export/... # Export CSV
+```
+
+---
+
+## 👨‍💻 Author
+
+Project created for **Web Technologies** - 2024/2025
