@@ -27,6 +27,31 @@ export default function Register() {
         e.preventDefault();
         setError('');
 
+        if(!formData.username || formData.username.trim() === '' 
+            || !formData.email || formData.email.trim() === ''
+            || !formData.password || formData.password.trim() === ''
+            || !formData.confirmPassword || formData.confirmPassword.trim() === ''){
+
+                setError("All the fields are required!");
+                return;
+
+        }
+
+        if(formData.username.length < 3){
+            setError("The size of username must be over 3 characters!");
+            return;
+        }
+
+        if(!(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))){
+            setError("Invalid email. Please try again.");
+            return;
+        }
+
+        if(formData.password.length < 6){
+            setError("Password must contain at least 6 characters.");
+            return;
+        }
+
         if(formData.password !== formData.confirmPassword){
             setError("Passwords are not matching");
             return;
@@ -89,6 +114,7 @@ export default function Register() {
                     <input type="password" className="inputAuth" id="confirmPassword" value={formData.confirmPassword} onChange={handleChange}/>
                 </div>
                 
+                {error && <div style={{ color: 'red', marginBottom: '10px', textAlign: 'center' }}>{error}</div>}
 
                 <button className="btnSubmit" onClick={handleRegister}>Register</button>
                 <p>Already have an account? <Link to="/login">Login here</Link></p>
