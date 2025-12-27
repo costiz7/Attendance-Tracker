@@ -1,5 +1,4 @@
 import './ConfirmationPage.css';
-import userIcon from './assets/user.png';
 import { useNavigate } from 'react-router-dom';
 
 export default function ConfirmationPage(){
@@ -11,9 +10,11 @@ export default function ConfirmationPage(){
 
     return (
         <div className="page-wrapper">
-            <h1>You're in!</h1>
-            <img className="poza" src={userIcon} alt="userImg" />
-            <button className="btn-goLogin" onClick={ goToLogin }>Go to login page</button>
+            <div className="header-wrapper">
+                <h1>You're in!</h1>
+            </div>
+            <img src="/yourein.webp" alt="You're In Icon" />
+            <button onClick={ goToLogin }>Go to the Log-in page</button>
         </div>
     );
 }
