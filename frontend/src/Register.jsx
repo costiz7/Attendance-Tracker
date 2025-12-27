@@ -73,12 +73,12 @@ export default function Register() {
             const data = await response.json();
 
             if(!response.ok){
-                throw new Error('Server Error');
+                throw new Error(data.message || 'Registration failed');
             }
 
             console.log(data);
 
-            navigate('/login');
+            navigate('/confirmationPage');
 
         } catch (error) {
             console.error(error);
