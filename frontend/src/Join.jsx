@@ -42,8 +42,10 @@ export default function Join(){
 
         scanner.render(onScanSuccess, onScanFailure);
 
-        return () => {
-            scanner.clear().catch(error => console.error("Failed to clear scanner", error));
+       return () => {
+            scanner.clear().catch(error => {
+                console.warn("Eroare la ștergerea scanner-ului (poate fi ignorată):", error);
+            });
         };
     }, []);
 
