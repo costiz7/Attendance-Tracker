@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import './Home.css';
+import NavBar from './NavBar.jsx';
 
 export default function Home() {
     return (
         <div className="home-wrapper">
-            {/*Sometime in the future a Navbar will be implemented */}
+            <NavBar />
             <div className="cards">
-                <EventCard title="Groups" imgSrc="./groups.webp" imgAlt="Join an Event Card" path="/groups"/>
-                <EventCard title="Join" imgSrc="./join.webp" imgAlt="Join Card" path="/join"/>
+                <EventCard title="Join an Event" imgSrc="./join.webp" imgAlt="Join Card" path="/join"/>
                 <EventCard title="Organize" imgSrc="./organize.webp" imgAlt="Organize Card" path="/organize"/>
             </div>
         </div>
