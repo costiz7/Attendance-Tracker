@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import './App.css'
 import Login from './Login.jsx'
 import Register from './Register.jsx'
 import ConfirmationPage from './ConfirmationPage.jsx';
 import Home from './Home.jsx';
+import ProtectedRoute from './ProtectedRoute.jsx';
 
 export default function App() {
 
@@ -14,7 +14,12 @@ export default function App() {
         <Route path="/login" element={ <Login /> } />
         <Route path="/register" element={ <Register /> } />
         <Route path="/confirmationPage" element={ <ConfirmationPage /> } />
-        <Route path="/home" element={ <Home /> } />
+
+        {/*Here we have all the routes that reuqire the user to be logged in */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/home" element={ <Home /> } />
+        </Route>
+        
       </Routes>
     </BrowserRouter>
   );
