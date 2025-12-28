@@ -4,6 +4,7 @@ import Login from './Login.jsx'
 import Register from './Register.jsx'
 import ConfirmationPage from './ConfirmationPage.jsx';
 import Home from './Home.jsx';
+import Join from './Join.jsx';
 
 export default function App() {
 
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/register" element={ <Register /> } />
         <Route path="/confirmationPage" element={ <ConfirmationPage /> } />
         <Route path="/home" element={ <Home /> } />
+        <Route path="/home/join" element={ <Join /> } />
       </Routes>
     </BrowserRouter>
   );

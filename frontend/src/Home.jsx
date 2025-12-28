@@ -18,7 +18,7 @@ function EventCard({title, imgSrc, imgAlt, path}) {
     const navigate = useNavigate();
 
     function handleClick() {
-        navigate(path);
+        navigate(`/home${path}`);
     }
 
     return(
