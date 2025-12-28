@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import './Join.css';
+import NavBar from "./NavBar";
 
 export default function Join(){
 
@@ -22,8 +23,8 @@ export default function Join(){
             { 
                 fps: 10,
                 qrbox: {
-                    width: 250,
-                    height: 250
+                    width: 200,
+                    height: 200
                 },
                 rememberLastUsedCamera: false
             },
@@ -92,40 +93,35 @@ export default function Join(){
     }
 
     return (
-        <div className="join-wrapper">
-            <h1 style={{color: 'white'}}>Join an event</h1>
-            <h2>Scan the QR code</h2>
+        <div className="menu-wrapper">
+            <NavBar />
+            <div className="join-wrapper">
+                <h1>Join an event</h1>
+                <h3>Scan the QR code</h3>
 
-            <div id="reader"></div>
+                <div id="reader"></div>
 
-            {scanResult && <p>Cod detectat: {scanResult}</p>}
+                {scanResult && <p>Cod detectat: {scanResult}</p>}
 
-            <div>
-                <p style={{fontWeight: 'bold'}}>OR</p>
+                <p>OR</p>
+
+                <form onSubmit={handleManualSubmit}>
+                    <input 
+                        type="text" 
+                        id="manualCode"
+                        placeholder="Enter the Code"
+                        value={manualCode}
+                        onChange={(e) => setManualCode(e.target.value)}
+                        className="code-input"
+                    />
+                    <button type="submit" className="join-button">
+                        Send
+                    </button>
+                </form>
+
+                {message && <h3 style={{color: message.includes('Error') ? 'red' : 'green'}}>{message}</h3>}
             </div>
-
-            <form onSubmit={handleManualSubmit} style={{display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center'}}>
-                <label htmlFor="manualCode">Enter the code</label>
-                <input 
-                    type="text" 
-                    id="manualCode"
-                    placeholder="Ex: 65a12b..."
-                    value={manualCode}
-                    onChange={(e) => setManualCode(e.target.value)}
-                    className="code-input"
-                    style={{maxWidth: '300px'}}
-                />
-                <button type="submit" className="join-button">
-                    Send
-                </button>
-            </form>
-
-            {message && <h3 style={{color: message.includes('Error') ? 'red' : 'green'}}>{message}</h3>}
-
-
-            <button className="join-button" onClick={() => navigate('/home')} style={{backgroundColor: 'rgba(108, 55, 151, 0.55)'}}>
-                Go back to Home Menu
-            </button>
         </div>
+        
     );
 }

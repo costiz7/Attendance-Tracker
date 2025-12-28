@@ -17,7 +17,7 @@ export default function NavBar() {
     return (
         <div className="navbar-wrapper">
                 <div className="home-btn">
-                    <img className="nav-icon" src="./homeBtn.webp" alt="Home Button" onClick={handleHomeBtn}/>
+                    <img className="nav-icon" src="/homeBtn.webp" alt="Home Button" onClick={handleHomeBtn}/>
                 </div>
                 <div className="logo">
                     <h1>Attendance Tracker</h1>
@@ -25,7 +25,7 @@ export default function NavBar() {
                 <div className="who-is">
                     <p className="name">Hi, {localStorage.getItem('user')}</p>
                     <div className="logout-btn">
-                        <img className="nav-icon" src="./logoutBtn.webp" alt="Log Out Button" onClick={handleLogOutBtn}/>
+                        <img className="nav-icon" src="/logoutBtn.webp" alt="Log Out Button" onClick={handleLogOutBtn}/>
                     </div>
                 </div>
         </div>
