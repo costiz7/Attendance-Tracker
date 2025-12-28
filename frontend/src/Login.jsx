@@ -55,7 +55,10 @@ export default function Login() {
                 throw new Error(data.message || 'Login failed');
             }
 
-            console.log(data);
+            if(data.token){
+                localStorage.setItem('token', data.token);
+            }
+            
             navigate('/home');
 
         } catch (error) {

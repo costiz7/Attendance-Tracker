@@ -76,8 +76,6 @@ export default function Register() {
                 throw new Error(data.message || 'Registration failed');
             }
 
-            console.log(data);
-
             navigate('/confirmationPage');
 
         } catch (error) {
