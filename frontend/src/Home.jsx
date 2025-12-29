@@ -7,18 +7,18 @@ export default function Home() {
         <div className="home-wrapper">
             <NavBar />
             <div className="cards">
-                <EventCard title="Join an Event" imgSrc="./join.webp" imgAlt="Join Card" path="/join"/>
-                <EventCard title="Organize" imgSrc="./organize.webp" imgAlt="Organize Card" path="/organize"/>
+                <EventCard title="Join an Event" imgSrc="/join.webp" imgAlt="Join Card" path="/home/join"/>
+                <EventCard title="Organize" imgSrc="/organize.webp" imgAlt="Organize Card" path="/home/organize"/>
             </div>
         </div>
     );
 }
 
-function EventCard({title, imgSrc, imgAlt, path}) {
+export function EventCard({title, imgSrc, imgAlt, path}) {
     const navigate = useNavigate();
 
     function handleClick() {
-        navigate(`/home${path}`);
+        navigate(`${path}`);
     }
 
     return(

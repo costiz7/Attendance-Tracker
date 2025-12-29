@@ -53,7 +53,14 @@
     font-family: 'Varela Round', sans-serif;
     font-size: 1.1rem;
     padding-left: 10px;
+    outline: none;
+    transition: 300ms;
     box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.input-wrapper > input:focus {
+    border-color: rgb(126, 97, 243);
+    box-shadow: 0px 0px 5px rgba(126, 97, 243, 0.5);
 }
 
 .input-wrapper > label {

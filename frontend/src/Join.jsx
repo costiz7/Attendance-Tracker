@@ -12,7 +12,7 @@ export default function Join(){
     const [message, setMessage] = useState('');
 
     useEffect(() => {
-
+        //Resetting the div to avoid re-render duplication
         const readerElement = document.getElementById("reader");
         if (readerElement) {
             readerElement.innerHTML = "";
@@ -32,7 +32,7 @@ export default function Join(){
         );
 
         const onScanSuccess = (decodedText) => {
-            scanner.clear();
+            scanner.clear(); //Stop the camera after scanning
             setScanResult(decodedText);
             handleAttendance(decodedText);
         };
@@ -43,47 +43,50 @@ export default function Join(){
 
         scanner.render(onScanSuccess, onScanFailure);
 
-       return () => {
+        //Cleanup: stop the scanner for when the component disappeasr
+        return () => {
             scanner.clear().catch(error => {
-                console.warn("Eroare la ștergerea scanner-ului (poate fi ignorată):", error);
+                console.warn("Scanner cleanup error:", error);
             });
         };
+
     }, []);
 
-    const handleAttendance = async (eventId) => {
+    const handleAttendance = async (code) => {
         const token = localStorage.getItem('token');
 
         if(!token){
             setMessage("You are not authenticated");
+            setTimeout(() => navigate('/login'), 2000);
             return;
         }
 
-        if(!eventId) {
+        if(!code) {
             setMessage("Invalid code. Please try again!");
             return;
         }
 
         try {
-            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/attendance`, {
+            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/attendances/join`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                body: JSON.stringify({ eventId: eventId })
+                body: JSON.stringify({ accessCode: code })
             });
 
             const data = await response.json();
 
             if(response.ok){
                 setMessage("Attendance logged successfully!");
-                setTimeout(() => navigate('/home'), 2000);
+                setTimeout(() => navigate('/home'), 2000); /*We have to change this so it goes to a confirmationPage */
             } else {
                 setMessage(`Error: ${data.message || 'Something went wrong'}`);
             }
         } catch (error) {
             console.error(error);
-            setMessage("Network error");
+            setMessage("Network error or Invalid code. Check console.");
         }
     };
 

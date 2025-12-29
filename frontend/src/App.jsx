@@ -5,6 +5,7 @@ import ConfirmationPage from './ConfirmationPage.jsx';
 import Home from './Home.jsx';
 import Join from './Join.jsx';
 import ProtectedRoute from './ProtectedRoute.jsx';
+import OrganizeMenu from './OrganizeMenu.jsx';
 
 export default function App() {
 
@@ -21,6 +22,7 @@ export default function App() {
         <Route element={<ProtectedRoute />}>
           <Route path="/home" element={ <Home /> } />
           <Route path="/home/join" element={ <Join /> } />
+          <Route path="/home/organize" element={ <OrganizeMenu /> }/>
         </Route>
         
       </Routes>

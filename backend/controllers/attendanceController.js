@@ -20,7 +20,7 @@ export const joinEvent = async (req, res) => {
         const endTime = new Date(event.endTime);
         
         if(now > endTime || now < startTime) {
-            return res.status(400).json({ message: "Too late, too late" });
+            return res.status(400).json({ message: "You are too late or too soon for this event." });
         }
 
         const existingAttendance = await Attendance.findOne({
