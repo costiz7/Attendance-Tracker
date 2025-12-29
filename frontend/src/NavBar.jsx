@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function NavBar() {
     const navigate = useNavigate();
+    const user = JSON.parse(localStorage.getItem('user'));
 
     function handleHomeBtn() {
         navigate('/home');
@@ -23,7 +24,7 @@ export default function NavBar() {
                     <h1>Attendance Tracker</h1>
                 </div>
                 <div className="who-is">
-                    <p className="name">Hi, {localStorage.getItem('user')}</p>
+                    <p className="name">Hi, {user.name}</p>
                     <div className="logout-btn">
                         <img className="nav-icon" src="/logoutBtn.webp" alt="Log Out Button" onClick={handleLogOutBtn}/>
                     </div>

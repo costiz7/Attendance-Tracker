@@ -57,7 +57,7 @@ export default function Login() {
 
             if(data.token){
                 localStorage.setItem('token', data.token);
-                localStorage.setItem('user', data.user.name);
+                localStorage.setItem('user', JSON.stringify(data.user));
             }
             
             navigate('/home');
