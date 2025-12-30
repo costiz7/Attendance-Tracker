@@ -1,13 +1,21 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import NavBar from "./NavBar";
 import './Styles/CreateGroup.css';
 
 export default function CreateGroup(){
 
     const [groupName, setGroupName] = useState('');
+    const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
     const token = localStorage.getItem('token');
 
     async function handleGroup(){
+
+        if(!groupName || groupName.trim() === ''){
+            setError("Enter a valid name!");
+            return;
+        }
+
         try {
             
             const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/groups`, {
@@ -24,10 +32,10 @@ export default function CreateGroup(){
             const data = await response.json();
 
             if(response.ok){
-                console.log("Grup creat!");
+                setMessage("Group created!");
             }
             else{
-                console.log("Eroare");
+                throw new Error(data.message || 'Try again!');
             }
 
         } catch (error) {
@@ -40,8 +48,9 @@ export default function CreateGroup(){
             <NavBar />
             <div className="organize-wrapper">
                 <h2>Create a group</h2>
-                <label>Name:</label>
-                <input type="text" value={ groupName }  onChange={ (e) => setGroupName(e.target.value)}></input>
+                <label className="label-create">Name:</label>
+                <input className="input-create" type="text" value={ groupName }  onChange={ (e) => setGroupName(e.target.value)}></input>
+                { error && <p style={{color: 'red', marginBottom: '10px', fontSize: '16px'}}>{ error }</p>}
                 <button className="btn-create" onClick={ handleGroup }>Create</button>
             </div>
         </div>
