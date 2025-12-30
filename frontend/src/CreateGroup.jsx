@@ -1,18 +1,18 @@
 import { useState } from "react";
 import NavBar from "./NavBar";
 import './Styles/CreateGroup.css';
+import { useNavigate } from "react-router-dom";
 
 export default function CreateGroup(){
 
     const [groupName, setGroupName] = useState('');
     const [error, setError] = useState('');
-    const [message, setMessage] = useState('');
     const token = localStorage.getItem('token');
+    const navigate = useNavigate();
 
     async function handleGroup(){
-
         setError('');
-        setMessage('');
+        
 
         if(!groupName || groupName.trim() === ''){
             setError("Enter a valid name!");
@@ -20,7 +20,6 @@ export default function CreateGroup(){
         }
 
         try {
-            
             const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/groups`, {
                 method: 'POST',
                 headers: {
@@ -35,7 +34,7 @@ export default function CreateGroup(){
             const data = await response.json();
 
             if(response.ok){
-                setMessage("Group created!");
+                navigate('/home/organize/createdgroup');
             }
             else{
                 throw new Error(data.message || 'Try again!');
@@ -50,12 +49,14 @@ export default function CreateGroup(){
         <div className="menu-wrapper">
             <NavBar />
             <div className="organize-wrapper">
-                <h2>Create a group</h2>
-                <label className="label-create">Name:</label>
-                <input className="input-create" type="text" value={ groupName }  onChange={ (e) => setGroupName(e.target.value)}></input>
-                { error && <p style={{color: 'red', marginBottom: '10px', fontSize: '16px'}}>{ error }</p> }
-                { message && <p style={{color: 'green', marginBottom: '10px', fontSize: '16px'}}>{ message }</p> }
-                <button className="btn-create" onClick={ handleGroup }>Create</button>
+                <h1>Create a group</h1>
+                <div className="create-group-input-wrapper">
+                    <label className="label-create-group">Name</label>
+                    <input className="input-create-group" type="text" value={ groupName }  onChange={ (e) => setGroupName(e.target.value)}></input>
+                    <button className="btn-create-group" onClick={ handleGroup }>Create</button>
+                </div>
+                
+                { error && <p id="error-message">{ error }</p> }
             </div>
         </div>
     );

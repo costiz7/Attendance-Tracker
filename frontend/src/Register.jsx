@@ -76,7 +76,7 @@ export default function Register() {
                 throw new Error(data.message || 'Registration failed');
             }
 
-            navigate('/confirmationPage');
+            navigate('/registersuccess');
 
         } catch (error) {
             console.error(error);

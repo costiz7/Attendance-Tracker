@@ -1,4 +1,4 @@
-.menu-wrapper {
+.create-event-wrapper {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -7,7 +7,7 @@
     min-height: 100vh;
 }
 
-.organize-wrapper {
+.event-form-wrapper {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -17,32 +17,37 @@
     height: fit-content;
     gap: 20px;
     overflow: hidden;
+}
 
+.event-form-wrapper > h1 {
     text-align: center;
     color: white;
 }
 
-.organize-wrapper > h1 {
-    margin: 40px;
+.event-form {
+    position: relative;
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
 }
 
-.create-group-input-wrapper {
+.event-form > .input-group {
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     height: fit-content;
     width: fit-content;
 
     padding: 20px;
     border-radius: 5px;
-    gap: 10px;
 
     background-color: white;
     box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
 }
-.label-create-group {
+
+.event-form > .input-group > label{
     position: absolute;
     top: 10px;
     left: 30px;
@@ -54,11 +59,12 @@
     color: black;
 }
 
-.input-create-group {
+.event-form > .input-group > .event-input {
     box-sizing: border-box;
-    width: 100%;
+    width: 250px;
     height: 40px;
     padding-left: 10px;
+    cursor: pointer;
 
     font-family: 'Varela Round', sans-serif;
     font-size: 1.1rem;
@@ -72,34 +78,35 @@
     transition: 300ms;
 }
 
-.input-create-group:focus {
+.event-form > .input-group > .event-input:focus {
     border-color: rgb(126, 97, 243);
     box-shadow: 0px 0px 5px rgba(126, 97, 243, 0.5);
 }
 
-.btn-create-group {
-    height: 40px;
+.btn-create-event {
+    height: 50px;
+    width: 290px;
 
     font-family: 'Varela Round', sans-serif;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: bold;
     letter-spacing: 2px;
-    padding: 0px 5px;
     color: white;
+    margin-bottom: 20px;
 
     background-color: rgb(0, 141, 0);
     border: none;
     border-radius: 5px;
-    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     transition: 300ms;
 }
 
-.btn-create-group:hover {
+.btn-create-event:hover {
     background-color: rgb(0, 103, 0);
 }
 
-.organize-wrapper > #error-message {
+#error-message {
     color: red;
     font-size: 1.1rem;
     letter-spacing: 1px;
