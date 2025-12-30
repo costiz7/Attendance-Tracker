@@ -1,11 +1,16 @@
 import './Styles/SuccessPage.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function SuccessPage({ title, btnText, path }){
     const navigate = useNavigate();
+    const location = useLocation(); //this hook reads data sent through navigation
 
     function handleClick(){
-        navigate(path);
+        if (location.state && location.state.createdEventId) {
+            navigate(`/event/${location.state.createdEventId}`);
+        } else {
+            navigate(path);
+        }
     }
 
     return (

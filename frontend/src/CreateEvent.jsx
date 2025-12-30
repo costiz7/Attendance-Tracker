@@ -84,7 +84,9 @@ export default function CreateEvent() {
             const data = await response.json();
 
             if (response.ok) {
-                navigate('/home/organize/createdevent'); 
+                navigate('/home/organize/createdevent', { 
+                    state: { createdEventId: data.event.id } 
+                }); 
             } else {
                 throw new Error(data.message || 'Failed to create event');
             }
