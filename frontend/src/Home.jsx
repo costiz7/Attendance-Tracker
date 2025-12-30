@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import './Styles/Home.css';
 import NavBar from './NavBar.jsx';
+import EventCard from "./EventCard.jsx";
 
 export default function Home() {
     return (
@@ -14,19 +14,3 @@ export default function Home() {
     );
 }
 
-export function EventCard({title, imgSrc, imgAlt, path}) {
-    const navigate = useNavigate();
-
-    function handleClick() {
-        navigate(`${path}`);
-    }
-
-    return(
-        <div className="card-wrapper" onClick={handleClick}>
-            <div className="card-header">
-                <h1>{title}</h1>
-            </div>
-            <img src={imgSrc} alt={imgAlt}/>
-        </div>
-    );
-}

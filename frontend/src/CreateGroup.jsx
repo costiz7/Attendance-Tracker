@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import NavBar from "./NavBar";
 import './Styles/CreateGroup.css';
 
