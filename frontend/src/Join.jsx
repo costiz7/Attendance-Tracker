@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Html5QrcodeScanner } from "html5-qrcode";
-import './Join.css';
+import './Styles/Join.css';
 import NavBar from "./NavBar";
 
 export default function Join(){

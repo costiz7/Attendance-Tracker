@@ -1,6 +1,6 @@
 import NavBar from "./NavBar";
 import { EventCard } from "./Home";
-import './OrganizeMenu.css'
+import './Styles/OrganizeMenu.css'
 
 export default function OrganizeMenu() {
     return (

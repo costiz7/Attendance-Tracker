@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import './Home.css';
+import './Styles/Home.css';
 import NavBar from './NavBar.jsx';
 
 export default function Home() {
