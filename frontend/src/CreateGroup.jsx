@@ -11,6 +11,9 @@ export default function CreateGroup(){
 
     async function handleGroup(){
 
+        setError('');
+        setMessage('');
+
         if(!groupName || groupName.trim() === ''){
             setError("Enter a valid name!");
             return;
@@ -50,7 +53,8 @@ export default function CreateGroup(){
                 <h2>Create a group</h2>
                 <label className="label-create">Name:</label>
                 <input className="input-create" type="text" value={ groupName }  onChange={ (e) => setGroupName(e.target.value)}></input>
-                { error && <p style={{color: 'red', marginBottom: '10px', fontSize: '16px'}}>{ error }</p>}
+                { error && <p style={{color: 'red', marginBottom: '10px', fontSize: '16px'}}>{ error }</p> }
+                { message && <p style={{color: 'green', marginBottom: '10px', fontSize: '16px'}}>{ message }</p> }
                 <button className="btn-create" onClick={ handleGroup }>Create</button>
             </div>
         </div>
