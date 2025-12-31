@@ -6,6 +6,10 @@
     font-family: 'Varela Round', sans-serif;
 }
 
+html, body{
+    overflow-x: hidden;
+}
+
 #root {
     display: flex;
     flex-direction: column;

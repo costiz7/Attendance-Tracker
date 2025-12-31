@@ -1,5 +1,9 @@
 .navbar-wrapper {
-    position: relative;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 3;
+
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
@@ -39,6 +43,7 @@
     position: relative;
     top: 5px;
     height: 40px;
+    width: fit-content;
     padding: 0px 20px;
 
     cursor: pointer;
@@ -48,4 +53,52 @@
 .nav-icon:hover {
     transform: scale(1.2);
     filter: drop-shadow(5px 5px 0px rgba(0, 0, 0, 0.3));
+}
+
+
+
+@media (max-width: 800px) {
+    .navbar-wrapper {
+        padding: 5px;
+        height: 60px;
+    }
+
+    .logo > h1 {
+        font-size: 2rem;
+        letter-spacing: 1px;
+        left: 0px;
+        top: 10px;
+    }
+
+    .who-is {
+        gap: 0px;
+    }
+
+    .name {
+        display: none;
+    }
+    
+}
+
+@media (max-width: 600px) {
+    .navbar-wrapper {
+        padding: 5px;
+        height: 60px;
+    }
+
+    .logo > h1 {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        left: 0px;
+        top: 15px;
+    }
+
+    .who-is {
+        gap: 0px;
+    }
+
+    .name {
+        display: none;
+    }
+    
 }

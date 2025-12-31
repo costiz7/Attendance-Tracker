@@ -188,9 +188,8 @@ export default function YourGroups(){
                                                 <button 
                                                     className="csv-btn group-csv" 
                                                     onClick={() => handleGroupExport(group.id, group.name)}
-                                                    title="Download Full Group Report"
                                                 >
-                                                    ⬇️ Group Report
+                                                    Group Report
                                                 </button>
                                             )}
                                         </div>
