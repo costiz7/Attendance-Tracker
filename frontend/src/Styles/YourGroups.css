@@ -1,0 +1,283 @@
+.menu-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.yourGroups-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+    width: 90%;
+    max-width: 800px;
+    height: fit-content;
+    gap: 20px;
+    text-align: center;
+    color: white;
+}
+
+.group-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.accordion-item {
+    background: white;
+    color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.accordion-item.active {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.accordion-header {
+    padding: 15px 20px;
+    background-color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid transparent;
+    transition: background 0.2s;
+}
+
+.accordion-header:hover {
+    background-color: #f8f9fa;
+}
+
+.accordion-item.active .accordion-header {
+    border-bottom: 1px solid #eee;
+    background-color: #f1f8ff;
+}
+
+.accordion-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.accordion-header span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+    min-width: 20px;
+    text-align: center;
+}
+
+.accordion-content {
+    padding: 20px;
+    background-color: #fff;
+    animation: slideDown 0.3s ease-out;
+}
+
+.content-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.content-actions h4 {
+    margin: 0;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+.csv-btn.group-csv {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.csv-btn.group-csv:hover {
+    background-color: #218838;
+}
+
+.events-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+.event-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    background-color: #fafbfc;
+}
+
+.event-item:last-child {
+    border-bottom: none;
+}
+
+.event-info-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.event-name {
+    font-weight: 600;
+    color: #333;
+    font-size: 1rem;
+}
+
+.event-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.icon-btn {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background 0.2s;
+}
+
+.icon-btn:hover {
+    background-color: #5a6268;
+}
+
+.details-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+
+.details-btn:hover {
+    background-color: #0056b3;
+}
+
+.btn-delete {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-delete:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(2px);
+}
+
+.modal-box {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.modal-box h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.modal-box p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.modal-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.1s, opacity 0.2s;
+}
+
+.modal-btn:active {
+    transform: scale(0.98);
+}
+
+.modal-btn.cancel {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.modal-btn.cancel:hover {
+    background-color: #d0d0d0;
+}
+
+.modal-btn.confirm {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.modal-btn.confirm:hover {
+    background-color: #e60000;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}

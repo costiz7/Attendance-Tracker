@@ -9,6 +9,7 @@ import OrganizeMenu from './OrganizeMenu.jsx';
 import CreateGroup from './CreateGroup.jsx';
 import CreateEvent from './CreateEvent.jsx';
 import EventDashboard from './EventDashboard.jsx';
+import YourGroups from './YourGroups.jsx';
 
 export default function App() {
 
@@ -30,7 +31,8 @@ export default function App() {
           <Route path="/home/organize/createdgroup" element={ <SuccessPage title="Group Created!" btnText="Create an Event" path="/home/organize/createevent"/> } />
           <Route path="/home/organize/createevent" element={ <CreateEvent /> } />
           <Route path="/home/organize/createdevent" element={ <SuccessPage title="Event created!" btnText="Show Event details" path="/home"/> } />
-          <Route path="/event/:id" element={ <EventDashboard /> }/>
+          <Route path="/event/:id" element={ <EventDashboard /> } />
+          <Route path="/home/organize/yourgroups" element={ <YourGroups /> } />
         </Route>
         
       </Routes>
