@@ -87,31 +87,47 @@ export default function EventDashboard() {
                 <div className="info-card">
                     <div className="header-wrapper">
                         <h1 className="event-title">{event.name}</h1>
-                        <span className={`status-badge${isEventOpen ? 'status-open' : 'status-closed'}`}>{eventStatus}</span>
                     </div>
-
-                    <div className="qr-wrapper">
-                        <QRCode value={event.accessCode} size={200} bgColor='#FFFFFF' fgColor='#000000'/>
-                    </div>
-
-                    <div className="code-wrapper">
-                        <h2 className="code-text">{event.accessCode}</h2>
-                    </div>
-
-                    <div className="date-wrapper">
-                        <div className="date-row">
-                            <span>Start:</span>
-                            <strong>{new Date(event.startTime).toLocaleString('ro-RO')}</strong>
+                    <div className="event-card-wrapper">
+                        <div className="status-wrapper">
+                            <span className={`${isEventOpen ? 'status-open' : 'status-closed'}`}>{eventStatus}</span>
                         </div>
-                        <div className="date-row">
-                            <span>End:</span>
-                            <strong>{new Date(event.endTime).toLocaleString('ro-RO')}</strong>
+                        <div className="qr-wrapper">
+                            <QRCode value={event.accessCode} size={250} bgColor='#FFFFFF' fgColor='#000000'/>
+                        </div>
+
+                        <div className="code-wrapper">
+                            <h2 className="code-text">{event.accessCode}</h2>
+                        </div>
+
+                        <div className="date-wrapper">
+                            <div className="date-row">
+                                <span>BEG - </span>
+                                <strong>{new Date(event.startTime).toLocaleString('ro-RO', {
+                                    year: 'numeric',
+                                    month: 'numeric',
+                                    day: 'numeric',
+                                    hour: '2-digit',
+                                    minute: '2-digit'
+                                })}</strong>
+                            </div>
+                            <div className="date-row">
+                                <span>END - </span>
+                                <strong>{new Date(event.endTime).toLocaleString('ro-RO', {
+                                    year: 'numeric',
+                                    month: 'numeric',
+                                    day: 'numeric',
+                                    hour: '2-digit',
+                                    minute: '2-digit'
+                                })}</strong>
+                            </div>
                         </div>
                     </div>
+                    
                 </div>
 
                 <div className="attendees-section">
-                    <h1>Live Attendees ({attendees.length})</h1>
+                    <h1>Live Attendees - {attendees.length} </h1>
 
                     <div className="attendees-list">
                         {attendees.length === 0 ? (
@@ -119,9 +135,13 @@ export default function EventDashboard() {
                         ) : (
                             attendees.map((att) => (
                                 <div key={att.id} className="attendee-wrapper">
-                                    <span className="attendee-name">{att.user.name}</span>
+                                    <span className="attendee-name">#{att.userId} - {att.user.name}</span>
+                                    <span className="attendee-email">{att.user.email}</span>
                                     <span className="attendee-time">
-                                        {new Date(att.joinedAt).toLocaleString('ro-RO')}
+                                        {new Date(att.joinedAt).toLocaleString('ro-RO', {
+                                            hour: '2-digit',
+                                            minute: '2-digit'
+                                        })}
                                     </span>
                                 </div>
                             ))
