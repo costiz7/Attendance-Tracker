@@ -6,6 +6,7 @@
     width: 100%;
     min-height: 100vh;
     padding-top: 70px;
+    user-select: none;
 }
 
 .event-form-wrapper {

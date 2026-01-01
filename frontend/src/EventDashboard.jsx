@@ -4,6 +4,7 @@ import QRCode from "react-qr-code";
 import './Styles/EventDashboard.css';
 import NavBar from './NavBar';
 
+//Our event dashboard component for seeing event details
 export default function EventDashboard() {
     const { id } = useParams();
 

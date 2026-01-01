@@ -86,38 +86,44 @@ export default function Register() {
     }
 
     return (
-        <div className="form-wrapper">
-            <div className="title">
-                <h1>Register</h1>
+        <>
+            <div className="header-logo">
+                <h1>Attendance Tracker</h1>
             </div>
-            <div className="submit-wrapper">
+            <div className="form-wrapper">
+                <div className="title">
+                    <h1>Register</h1>
+                </div>
+                <div className="submit-wrapper">
 
-                <div className="input-wrapper">
-                    <label htmlFor="username">Username</label>
-                    <input type="text" className="inputAuth" id="username" value={formData.username} onChange={handleChange}/>
+                    <div className="input-wrapper">
+                        <label htmlFor="username">Username</label>
+                        <input type="text" className="inputAuth" id="username" value={formData.username} onChange={handleChange}/>
+                    </div>
+                    
+                    <div className="input-wrapper">
+                        <label htmlFor="email">Email</label>
+                        <input type="text" className="inputAuth" id="email" value={formData.email} onChange={handleChange}/>
+                    </div>
+
+                    <div className="input-wrapper">
+                        <label htmlFor="enterPassword">Enter Password</label>
+                        <input type="password" className="inputAuth" id="password" value={formData.password} onChange={handleChange}/>
+                    </div>
+                    
+                    <div className="input-wrapper">
+                        <label htmlFor="renterPassword">Confirm Password</label>
+                        <input type="password" className="inputAuth" id="confirmPassword" value={formData.confirmPassword} onChange={handleChange}/>
+                    </div>
+                    
+                    {error && <div style={{ color: 'red', marginBottom: '10px', textAlign: 'center' }}>{error}</div>}
+
+                    <button className="btnSubmit" onClick={handleRegister}>Register</button>
+                    <p>Already have an account? <Link to="/login">Login here</Link></p>
                 </div>
                 
-                <div className="input-wrapper">
-                    <label htmlFor="email">Email</label>
-                    <input type="text" className="inputAuth" id="email" value={formData.email} onChange={handleChange}/>
-                </div>
-
-                <div className="input-wrapper">
-                    <label htmlFor="enterPassword">Enter Password</label>
-                    <input type="password" className="inputAuth" id="password" value={formData.password} onChange={handleChange}/>
-                </div>
-                
-                <div className="input-wrapper">
-                    <label htmlFor="renterPassword">Confirm Password</label>
-                    <input type="password" className="inputAuth" id="confirmPassword" value={formData.confirmPassword} onChange={handleChange}/>
-                </div>
-                
-                {error && <div style={{ color: 'red', marginBottom: '10px', textAlign: 'center' }}>{error}</div>}
-
-                <button className="btnSubmit" onClick={handleRegister}>Register</button>
-                <p>Already have an account? <Link to="/login">Login here</Link></p>
             </div>
-            
-        </div>
+        </>
+        
     );
 }

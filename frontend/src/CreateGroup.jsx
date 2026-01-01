@@ -3,6 +3,7 @@ import NavBar from "./NavBar";
 import './Styles/CreateGroup.css';
 import { useNavigate } from "react-router-dom";
 
+//Create Group component
 export default function CreateGroup(){
 
     const [groupName, setGroupName] = useState('');
@@ -12,7 +13,6 @@ export default function CreateGroup(){
 
     async function handleGroup(){
         setError('');
-        
 
         if(!groupName || groupName.trim() === ''){
             setError("Enter a valid name!");
@@ -20,6 +20,7 @@ export default function CreateGroup(){
         }
 
         try {
+            //Create the group in our database with a GET callss
             const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/groups`, {
                 method: 'POST',
                 headers: {

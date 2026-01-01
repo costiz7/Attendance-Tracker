@@ -13,8 +13,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 1;
-    margin-top: 50px;
+    
+    margin-top: 20px;
     width: 350px;
     height: fit-content;
     gap: 20px;
@@ -39,6 +39,7 @@
 
 .join-wrapper > p {
     font-weight: bold;
+    position: relative;
 }
 
 .join-wrapper > form {
@@ -75,7 +76,6 @@
     box-sizing: border-box;
     width: 60px;
     height: 40px;
-    margin-bottom: 20px;
 
     font-family: 'Varela Round', sans-serif;
     font-size: 1rem;
@@ -135,4 +135,10 @@
     border: none !important;
     box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3) !important;
     outline: none !important;
+}
+
+@media(max-width: 450px) {
+    .join-wrapper > form > input {
+        width: 90%;
+    }
 }

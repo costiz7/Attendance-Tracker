@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import './Styles/CreateEvent.css';
 import NavBar from "./NavBar";
 
+//Our Create Event componenet
 export default function CreateEvent() {
     //State for form data
     const [formData, setFormData] = useState({

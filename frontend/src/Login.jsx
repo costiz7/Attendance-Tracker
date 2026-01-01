@@ -70,28 +70,34 @@ export default function Login() {
     }
 
     return (
-        <div className="form-wrapper">
-            <div className="title">
-                <h1>Log in</h1>
+        <>
+            <div className="header-logo">
+                <h1>Attendance Tracker</h1>
             </div>
-            <div className="submit-wrapper">
-    
-                <div className="input-wrapper">
-                    <label htmlFor="email">Email</label>
-                    <input type="text" className="inputAuth" id="email" value={ formData.email } onChange={ handleChange }/>
+            <div className="form-wrapper">
+                <div className="title">
+                    <h1>Log in</h1>
                 </div>
-                
-                <div className="input-wrapper">
-                    <label htmlFor="password">Password</label>
-                    <input type="password" className="inputAuth" id="password" value={ formData.password } onChange={ handleChange }/>
-                </div>
+                <div className="submit-wrapper">
+        
+                    <div className="input-wrapper">
+                        <label htmlFor="email">Email</label>
+                        <input type="text" className="inputAuth" id="email" value={ formData.email } onChange={ handleChange }/>
+                    </div>
+                    
+                    <div className="input-wrapper">
+                        <label htmlFor="password">Password</label>
+                        <input type="password" className="inputAuth" id="password" value={ formData.password } onChange={ handleChange }/>
+                    </div>
 
-                { error && <div style={{ color: 'red', marginBottom: '10px', textAlign: 'center' }}>{ error }</div>}
-                
-                <button className="btnSubmit" onClick={ handleLogin }>Log in</button>
-                <p>Don't have an account? <Link to="/register">Register here</Link></p>
+                    { error && <div style={{ color: 'red', marginBottom: '10px', textAlign: 'center' }}>{ error }</div>}
+                    
+                    <button className="btnSubmit" onClick={ handleLogin }>Log in</button>
+                    <p>Don't have an account? <Link to="/register">Register here</Link></p>
+                </div>
             </div>
-        </div>
+        </>
+        
         
     );
 }

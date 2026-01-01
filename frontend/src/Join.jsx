@@ -80,7 +80,7 @@ export default function Join(){
 
             if(response.ok){
                 setMessage("Attendance logged successfully!");
-                setTimeout(() => navigate('/home'), 2000); /*We have to change this so it goes to a confirmationPage */
+                navigate('/joinedsuccess');
             } else {
                 setMessage(`Error: ${data.message || 'Something went wrong'}`);
             }
@@ -104,7 +104,7 @@ export default function Join(){
 
                 <div id="reader"></div>
 
-                {scanResult && <p>Cod detectat: {scanResult}</p>}
+                {scanResult && <p>Code detected: {scanResult}</p>}
 
                 <p>OR</p>
 

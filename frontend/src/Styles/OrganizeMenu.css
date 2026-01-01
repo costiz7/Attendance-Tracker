@@ -21,3 +21,9 @@
     height: 100%;
     padding: 20px;
 }
+
+@media(max-width: 450px) {
+    .organize-menu-wrapper .cards {
+        gap: 50px;
+    }
+}

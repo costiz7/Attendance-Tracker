@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import './Styles/EventCard.css';
 
+//Our generic Event Card component (Create Event, Organize, Join Event)
 export default  function EventCard({title, imgSrc, imgAlt, path}) {
     const navigate = useNavigate();
 

@@ -1,6 +1,7 @@
 import './Styles/SuccessPage.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 
+//Our success component for when something good happens
 export default function SuccessPage({ title, btnText, path }){
     const navigate = useNavigate();
     const location = useLocation(); //this hook reads data sent through navigation

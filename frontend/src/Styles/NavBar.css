@@ -3,6 +3,7 @@
     top: 0px;
     left: 0px;
     z-index: 3;
+    user-select: none;
 
     display: flex;
     justify-content: space-between;
@@ -24,6 +25,7 @@
 }
 
 .logo > h1 {
+    font-family: 'Cabin Sketch', sans-serif;
     position: relative;
     top: 5px;
     left: 50px;
@@ -87,7 +89,8 @@
     }
 
     .logo > h1 {
-        font-size: 1.1rem;
+        font-size: 1.4rem;
+        text-align: center;
         letter-spacing: 1px;
         left: 0px;
         top: 15px;

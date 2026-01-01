@@ -74,3 +74,13 @@
         transform: scale(1) rotate(0deg);
     }
 }
+
+@media(max-width: 450px) {
+    .page-wrapper {
+        width: 80%;
+    }
+
+    .header-wrapper > h1 {
+        font-size: 1.8rem;
+    }
+}
