@@ -9,7 +9,7 @@ import eventRoutes from './routes/eventRoutes.js';
 import attendanceRoutes from './routes/attendanceRoutes.js';
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 //We need CORS to communicate with our frontend server
 app.use(cors());
