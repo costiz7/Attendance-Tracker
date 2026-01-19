@@ -1,119 +1,98 @@
-# 🕒 Attendance Tracker
+# 📅 Attendance Tracker
 
-A web application for monitoring event attendance, designed for both organizers and participants.  
-**Project created for the Web Technologies course.**
+A full-stack web application designed to efficiently manage attendance for groups and events. The app allows users to organize activities, create events, and monitor member participation in a simple and intuitive way.
+
+## Check it out here
+[www.attendancetracker.online](https://www.attendancetracker.online)
+
+## 👥 The Team
+This project was built in collaboration by:
+* **Zanescu Costel**
+* **Voicu Andreea-Diana**
 
 ---
 
-## 🎯 About
+## 🚀 How to Run the Application
 
-This application allows:
-- ✅ Creating and managing events
-- 🔑 Automatic generation of unique access codes
-- 📋 Confirming attendance via code
-- 📊 Real-time participant lists
-- 📥 Data export in CSV format
+To run the project locally, you will need to set up the environment variables and start both the Backend (server) and Frontend (client).
+
+### Prerequisites
+* [Node.js](https://nodejs.org/) installed.
+* **MySQL** database installed and running locally.
+
+---
+
+### Step 1: Start the Backend (Server)
+
+1.  Open a terminal and navigate to the backend folder:
+    ```bash
+    cd backend
+    ```
+
+2.  Install the necessary dependencies:
+    ```bash
+    npm install
+    ```
+
+3.  **Configuration (.env):**
+    Create a file named `.env` inside the `backend` folder. You need to provide your own local MySQL database credentials. Copy and paste the template below and fill in your details:
+
+    ```env
+    # Database Configuration
+    DB_HOST=127.0.0.1          # Usually 127.0.0.1 or localhost
+    DB_USER=your_mysql_user    # Your MySQL username (e.g., root)
+    DB_PASS=your_mysql_pass    # Your MySQL password
+    DB_NAME=attendance_db      # The name of the database
+    DB_DIALECT=mysql
+
+    # Security & Server
+    JWT_SECRET=add_a_complex_secret_string_here
+    PORT=3000
+    ```
+
+    > **⚠️ Important:** Before starting the server, make sure to create the database manually in your MySQL Workbench or CLI:
+    > ```sql
+    > CREATE DATABASE attendance_db;
+    > ```
+
+4.  Start the server:
+    ```bash
+    node app.js
+    ```
+    *The server should now be running on port 3000.*
+
+---
+
+### Step 2: Start the Frontend (Interface)
+
+1.  Open a **second terminal** (keep the first one running) and navigate to the frontend folder:
+    ```bash
+    cd frontend
+    ```
+
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+
+3.  **Configuration (.env):**
+    Create a file named `.env` inside the `frontend` folder and add the API URL:
+
+    ```env
+    VITE_BASE_URL=http://localhost:3000
+    ```
+
+4.  Start the React application:
+    ```bash
+    npm run dev
+    ```
+
+5.  Access the link shown in the terminal (usually `http://localhost:5173`) to use the application.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React.js (Vite)
-- **Backend:** Node.js + Express
-- **Database:** MySQL
-- **ORM:** Sequelize
-- **Authentication:** JWT (JSON Web Tokens)
-
----
-
-## 👥 User Roles
-
-### 🔹 Organizer
-- Creates events and event groups
-- Generates unique access codes
-- Views participants in real-time
-- Exports attendance lists (CSV)
-
-### 🔹 Participant
-- Enters access code to confirm attendance
-- Can view personal attendance history
-
----
-
-## 📦 Installation & Setup
-
-### Prerequisites
-- Node.js (v18+)
-- MySQL
-- npm or yarn
-
-### 1. Backend Setup
-
-```bash
-cd backend
-npm install
-```
-
-Create a `.env` file:
-```env
-DB_NAME=attendance_db
-DB_USER=root
-DB_PASS=your_password
-DB_HOST=localhost
-DB_DIALECT=mysql
-JWT_SECRET=your_secret_key_here
-```
-
-Start the server:
-```bash
-npm run dev
-```
-
-### 2. Frontend Setup
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
----
-
-## 🗂️ Database Structure
-
-| Table | Description |
-|-------|-------------|
-| **users** | Users (organizers & participants) |
-| **event_groups** | Groups of events |
-| **events** | Individual events with unique codes |
-| **attendances** | Many-to-many relationship between users and events |
-
----
-
-## 🚀 Key Features
-
-- ✨ **Secure authentication** with JWT
-- 🎲 **Unique codes** automatically generated for each event
-- ⏰ **Time validation** - attendance can only be marked during event timeframe
-- 🔒 **Duplicate registration protection**
-- 📤 **CSV export** for individual events or entire groups
-
----
-
-## 📝 API Endpoints (examples)
-
-```
-POST   /api/auth/register          # User registration
-POST   /api/auth/login             # User login
-POST   /api/groups                 # Create event group
-POST   /api/events                 # Create event
-POST   /api/attendances/join       # Mark attendance
-GET    /api/attendances/event/:id  # List participants
-GET    /api/attendances/export/... # Export CSV
-```
-
----
-
-## 👨‍💻 Author
-
-Project created for **Web Technologies** - 2024/2025
+* **Frontend:** React, Vite, CSS Modules
+* **Backend:** Node.js, Express
+* **Database:** Sequelize ORM (MySQL)
